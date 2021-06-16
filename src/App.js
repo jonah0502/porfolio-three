@@ -22,10 +22,11 @@ import { useInView } from "react-intersection-observer";
 
 
 
-const HTMLContent = ({domContent, position}) => {
+const HTMLContent = ({domContent, position, children}) => {
   const ref = useRef();
   useFrame(() => (ref.current.rotation.y += 0.002));
 
+  
   return (
     <Section factor={1.5} offset={1}>
       <group position={[0, position, 0]}>
@@ -34,7 +35,7 @@ const HTMLContent = ({domContent, position}) => {
         </mesh>
       <Html fullscreen portal={domContent}>
         <div className = "container">
-          <h1 className="title">Jonah's Webpage</h1>
+  <h1 className="title">{children}</h1>
           </div>
         </Html>
       </group>
@@ -59,12 +60,14 @@ function AnimationCanvas() {
 
       <HTMLContent 
       domContent={domContent}
-      position = {265}
-/>
-<HTMLContent 
+      position = {265}>
+        <span>Jonah's Webpage</span>
+        </HTMLContent>
+        <HTMLContent 
       domContent={domContent}
-      position = {0}
-/>
+      position = {0}>
+        <span>Something Else</span>
+        </HTMLContent>
       </Suspense>
     </Canvas>
           <div
