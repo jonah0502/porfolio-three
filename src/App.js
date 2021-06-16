@@ -2,10 +2,12 @@ import React from "react";
 import "./App.scss";
 import { Suspense } from 'react';
 import { useCallback, useMemo, useRef, useState, useEffect} from 'react';
+import jonah from './assets/jonah.jpg';
+import * as THREE from 'three'
 
 // R3F
-import { Canvas, useFrame, useThree } from "react-three-fiber";
-import { Html, useProgress, useGLTFLoader } from "drei";
+import { Canvas, useFrame, useThree, useLoader } from "react-three-fiber";
+import { Html, Box, Plane, useProgress, useGLTFLoader } from "drei";
 //Components
 import Header from "./components/header";
 import Points from "./components/points.js";
@@ -20,13 +22,35 @@ import { a, useTransition } from "@react-spring/web";
 //Intersection Observer
 import { useInView } from "react-intersection-observer";
 
+const Lights = () => {
+  return (
+    <>
+      {/* Ambient Light illuminates lights for all objects */}
+      <ambientLight intensity={0.3} />
+      {/* Diretion light */}
+      <directionalLight position={[10, 10, 5]} intensity={1} />
+      <directionalLight
+        castShadow
+        position={[0, 10, 0]}
+        intensity={1.5}
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+        shadow-camera-far={50}
+        shadow-camera-left={-10}
+        shadow-camera-right={10}
+        shadow-camera-top={10}
+        shadow-camera-bottom={-10}
+      />
+      {/* Spotlight Large overhead light */}
+      <spotLight intensity={1} position={[1000, 0, 0]} castShadow />
+    </>
+  );
+};
 
 
-const HTMLContent = ({domContent, position, children}) => {
+const Homepage = ({domContent, position, children}) => {
   const ref = useRef();
   useFrame(() => (ref.current.rotation.y += 0.002));
-
-  
   return (
     <Section factor={1.5} offset={1}>
       <group position={[0, position, 0]}>
@@ -35,7 +59,36 @@ const HTMLContent = ({domContent, position, children}) => {
         </mesh>
       <Html fullscreen portal={domContent}>
         <div className = "container">
-  <h1 className="title">{children}</h1>
+             <h1 className="title">{children}</h1>
+          </div>
+        </Html>
+      </group>
+    </Section>
+  );
+}
+
+const PorfolioItem = ({domContent, position, children, bgColor, object}) => {
+  const ref = useRef();
+  const boxRef = useRef();
+  useFrame(() => {
+    boxRef.current.rotation.y += 0.001;
+  });
+  const [refItem, inView] = useInView({ threshold: 0});
+  useEffect(() => {
+    inView && (document.getElementsByClassName('anim')[0].style.background = bgColor);
+  }, [inView]);
+  const texture = useLoader(THREE.TextureLoader, jonah)
+  return (
+    <Section factor={1.5} offset={1} >
+      <group position={[0, position, 0]}>
+      <mesh ref={ref} position={[0, 0, 0]}>
+      <Box ref={boxRef} args={[17, 17, 17]} radius={0} position={[65, 0, 35]}>
+        <meshStandardMaterial attach="material" map={texture} />
+      </Box>
+        </mesh>
+      <Html fullscreen portal={domContent}>
+        <div ref={refItem} className = "container">
+             {children}
           </div>
         </Html>
       </group>
@@ -52,22 +105,31 @@ function AnimationCanvas() {
   return (
     <>
     <Canvas
+      concurrent
       colorManagement
       camera={{ position: [100, 10, 0], fov: 75 }}
     >
+    <Lights />
 
       <Suspense fallback={null}>
 
-      <HTMLContent 
+      <Homepage 
       domContent={domContent}
       position = {265}>
         <span>Jonah's Webpage</span>
-        </HTMLContent>
-        <HTMLContent 
+        </Homepage>
+        <PorfolioItem 
       domContent={domContent}
-      position = {0}>
-        <span>Something Else</span>
-        </HTMLContent>
+      position = {0}
+      bgColor='#000000'>
+      <h1 className = "abtMe"><span>About Me</span></h1>
+        </PorfolioItem>
+        <PorfolioItem 
+      domContent={domContent}
+      position = {-250}
+      bgColor='#FFFFFF'>
+      <h1 className = "title" style = {{color:"black"}}><span>TagFlix</span></h1>
+        </PorfolioItem>
       </Suspense>
     </Canvas>
           <div

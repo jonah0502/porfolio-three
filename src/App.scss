@@ -16,7 +16,22 @@ background :black;
 transition: 0.4s ease-in-out;
 
 }
-
+h1{
+  color: #fff;
+}
+.abtMe{
+  font-size: 10rem;
+  text-align: center;
+  width: 75%;
+  margin-left:25% ;
+  color: #fff;
+  span {
+    display: block;
+  }
+  @media (max-width: 1440px) {
+    font-size: 6rem;
+  }
+}
 .anim {
   width: 100vw;
   height: 95vh;
