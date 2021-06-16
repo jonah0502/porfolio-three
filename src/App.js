@@ -11,13 +11,10 @@ import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import { Html, Box, Plane } from "@react-three/drei";
 //Components
 import Header from "./components/header";
-import Points from "./components/points.js";
-import CameraControls from "./components/cameraControls.js"
-import { Section } from "./components/section";
-import Camera from "./components/camera.js"
 import Buttons from "./components/button.js"
 import Homepage from "./components/home.js"
 import AboutMe from "./components/about-me.js"
+import TagFlix from "./components/tagFlix.js"
 // Page State
 import state from "./components/state";
 // React Spring
@@ -82,12 +79,12 @@ function AnimationCanvas() {
       <h1 className = "abtMe"><span>About Me</span></h1>
       <Buttons />
         </AboutMe>
-        <AboutMe 
+        <TagFlix 
       domContent={domContent}
       position = {-250}
       bgColor='#FFFFFF'>
       <h1 className = "title" style = {{color:"black"}}><span>TagFlix</span></h1>
-        </AboutMe>
+        </TagFlix>
       </Suspense>
     </Canvas>
           <div

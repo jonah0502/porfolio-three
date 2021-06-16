@@ -13,7 +13,7 @@ import { Section } from "./section";
 import { useInView } from "react-intersection-observer";
 
 
-export default function AbtMe ({domContent, position, children, bgColor, object}) {
+export default function TagFlix ({domContent, position, children, bgColor, object}) {
     const ref = useRef();
     const boxRef = useRef();
     useFrame(() => {
@@ -33,7 +33,7 @@ export default function AbtMe ({domContent, position, children, bgColor, object}
         </Box>
           </mesh>
         <Html fullscreen portal={domContent}>
-          <div id="AbtMe" ref={refItem} className = "container">
+          <div id="TagFlix" ref={refItem} className = "container">
                {children}
             </div>
           </Html>

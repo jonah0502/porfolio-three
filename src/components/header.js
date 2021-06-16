@@ -8,13 +8,13 @@ export default function Header() {
         <nav>
           <ul>
             <li>
-              <a href='/'>Home</a>
+              <a href='#Home'>Home</a>
             </li>
             <li>
-              <a href='/'>About</a>
+              <a href='#AbtMe'>About</a>
             </li>
             <li>
-              <a href='/'>TagFlix</a>
+              <a href='#TagFlix'>TagFlix</a>
             </li>
             <li>
               <a href='/'>Restaurant-Reviews</a>
