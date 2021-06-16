@@ -22,13 +22,13 @@ import { useInView } from "react-intersection-observer";
 
 
 
-const HTMLContent = (domContent) => {
+const HTMLContent = ({domContent, position}) => {
   const ref = useRef();
   useFrame(() => (ref.current.rotation.y += 0.002));
 
   return (
     <Section factor={1.5} offset={1}>
-      <group position={[0, 265, 0]}>
+      <group position={[0, position, 0]}>
       <mesh ref={ref} position={[0, -35, 0]}>
            <Points />
         </mesh>
@@ -59,8 +59,12 @@ function AnimationCanvas() {
 
       <HTMLContent 
       domContent={domContent}
+      position = {265}
 />
-
+<HTMLContent 
+      domContent={domContent}
+      position = {0}
+/>
       </Suspense>
     </Canvas>
           <div
