@@ -17,7 +17,7 @@ export default function AbtMe ({domContent, position, children, bgColor, object}
     const ref = useRef();
     const boxRef = useRef();
     useFrame(() => {
-      boxRef.current.rotation.y += 0.001;
+      boxRef.current.rotation.y += 0.002;
     });
     const [refItem, inView] = useInView({ threshold: 0});
     useEffect(() => {

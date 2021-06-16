@@ -1,4 +1,5 @@
 import React from "react";
+import { Suspense } from 'react';
 import { useCallback, useMemo, useRef, useState, useEffect} from 'react';
 import jonah from '../assets/jonah.jpg';
 import * as THREE from 'three'
@@ -12,13 +13,12 @@ import { Section } from "./section";
 //Intersection Observer
 import { useInView } from "react-intersection-observer";
 
+import Float from "./Float.js";
+
 
 export default function TagFlix ({domContent, position, children, bgColor, object}) {
     const ref = useRef();
-    const boxRef = useRef();
-    useFrame(() => {
-      boxRef.current.rotation.y += 0.001;
-    });
+
     const [refItem, inView] = useInView({ threshold: 0});
     useEffect(() => {
       inView && (document.getElementsByClassName('anim')[0].style.background = bgColor);
@@ -28,9 +28,9 @@ export default function TagFlix ({domContent, position, children, bgColor, objec
       <Section factor={1.5} offset={1} >
         <group position={[0, position, 0]}>
         <mesh ref={ref} position={[0, 5, 0]}>
-        <Box ref={boxRef} args={[17, 17, 17]} radius={0} position={[65, 10, 30]}>
-          <meshStandardMaterial attach="material" map={texture} />
-        </Box>
+        <Suspense fallback={null}>
+        <Float/>
+        </Suspense>
           </mesh>
         <Html fullscreen portal={domContent}>
           <div id="TagFlix" ref={refItem} className = "container">
