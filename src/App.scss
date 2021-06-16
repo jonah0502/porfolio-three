@@ -16,6 +16,128 @@ background :black;
 transition: 0.4s ease-in-out;
 
 }
+
+
+h3 {
+  margin-bottom: 10px;
+}
+
+
+
+ul {
+  list-style-type: none;
+}
+
+
+p {
+  margin: 20px 0;
+}
+
+nav {
+  width: 33%;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li {
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 5px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+.typeB{
+  margin:0px;
+  white-space:nowrap;
+  overflow:hidden;
+  animation:typing 4s steps(22,end) forwards,
+            giveCursor 4s;
+}
+
+.title {
+  font-size: 10rem;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  color: #fff;
+}
+
+
+.typeA{
+  margin:0px;
+  white-space:nowrap;
+  overflow:hidden;
+  animation:typing 2s steps(22,end) forwards,
+            giveCursor 2s;
+}
+
+.typeC{
+  margin:0px;
+  white-space:nowrap;
+  overflow:hidden;
+  animation:typing 2s steps(20) forwards,
+            giveCursor 1s;
+}
+
+.cursor {
+  font-weight: 700;
+  animation: 1s blink step-end infinite;
+}
+
+.wb-body {
+  background: rgb(43, 42, 42);
+  padding: 20px;
+  color: black
+}
+
+.hidden {
+  display: none;
+}
+
+
+.container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+
+  50% {
+    color: var(--text-color);
+  }
+}
+
+@keyframes typing {
+  0% { width:0% }
+  100% { width:100% }
+}
+
+@keyframes giveCursor {
+  0%,100% {
+    border-right:2px solid transparent;
+  }
+  50% {
+    border-right:2px solid var(--text-color);
+  }
+}
+
 h1{
   color: #fff;
 }

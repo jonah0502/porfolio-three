@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import { useCallback, useMemo, useRef, useState, useEffect} from 'react';
 import jonah from './assets/jonah.jpg';
 import * as THREE from 'three'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // R3F
 import { Canvas, useFrame, useThree, useLoader } from "react-three-fiber";
@@ -14,7 +15,7 @@ import Points from "./components/points.js";
 import CameraControls from "./components/cameraControls.js"
 import { Section } from "./components/section";
 import Camera from "./components/camera.js"
-
+import Buttons from "./components/button.js"
 // Page State
 import state from "./components/state";
 // React Spring
@@ -123,6 +124,7 @@ function AnimationCanvas() {
       position = {0}
       bgColor='#000000'>
       <h1 className = "abtMe"><span>About Me</span></h1>
+      <Buttons />
         </PorfolioItem>
         <PorfolioItem 
       domContent={domContent}
