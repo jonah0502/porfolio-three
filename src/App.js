@@ -16,6 +16,8 @@ import CameraControls from "./components/cameraControls.js"
 import { Section } from "./components/section";
 import Camera from "./components/camera.js"
 import Buttons from "./components/button.js"
+import Homepage from "./components/home.js"
+import AboutMe from "./components/about-me.js"
 // Page State
 import state from "./components/state";
 // React Spring
@@ -49,53 +51,7 @@ const Lights = () => {
 };
 
 
-const Homepage = ({domContent, position, children}) => {
-  const ref = useRef();
-  useFrame(() => (ref.current.rotation.y += 0.002));
-  return (
-    <Section factor={1.5} offset={1}>
-      <group position={[0, position, 0]}>
-      <mesh ref={ref} position={[0, -35, 0]}>
-           <Points />
-        </mesh>
-      <Html fullscreen portal={domContent}>
-        <div className = "container">
-             <h1 className="title">{children}</h1>
-          </div>
-        </Html>
-      </group>
-    </Section>
-  );
-}
 
-const PorfolioItem = ({domContent, position, children, bgColor, object}) => {
-  const ref = useRef();
-  const boxRef = useRef();
-  useFrame(() => {
-    boxRef.current.rotation.y += 0.001;
-  });
-  const [refItem, inView] = useInView({ threshold: 0});
-  useEffect(() => {
-    inView && (document.getElementsByClassName('anim')[0].style.background = bgColor);
-  }, [inView]);
-  const texture = useLoader(THREE.TextureLoader, jonah)
-  return (
-    <Section factor={1.5} offset={1} >
-      <group position={[0, position, 0]}>
-      <mesh ref={ref} position={[0, 5, 0]}>
-      <Box ref={boxRef} args={[17, 17, 17]} radius={0} position={[65, 10, 30]}>
-        <meshStandardMaterial attach="material" map={texture} />
-      </Box>
-        </mesh>
-      <Html fullscreen portal={domContent}>
-        <div ref={refItem} className = "container">
-             {children}
-          </div>
-        </Html>
-      </group>
-    </Section>
-  );
-}
 
 function AnimationCanvas() {
   const [events, setEvents] = useState();
@@ -119,19 +75,19 @@ function AnimationCanvas() {
       position = {265}>
         <span>Jonah's Webpage</span>
         </Homepage>
-        <PorfolioItem 
+        <AboutMe 
       domContent={domContent}
       position = {0}
       bgColor='#000000'>
       <h1 className = "abtMe"><span>About Me</span></h1>
       <Buttons />
-        </PorfolioItem>
-        <PorfolioItem 
+        </AboutMe>
+        <AboutMe 
       domContent={domContent}
       position = {-250}
       bgColor='#FFFFFF'>
       <h1 className = "title" style = {{color:"black"}}><span>TagFlix</span></h1>
-        </PorfolioItem>
+        </AboutMe>
       </Suspense>
     </Canvas>
           <div
