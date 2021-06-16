@@ -1,5 +1,5 @@
 import React from "react";
-import { useFrame, useThree } from 'react-three-fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { useRef, useEffect } from 'react';
 
 

@@ -7,8 +7,8 @@ import * as THREE from 'three'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // R3F
-import { Canvas, useFrame, useThree, useLoader } from "react-three-fiber";
-import { Html, Box, Plane, useProgress, useGLTFLoader } from "drei";
+import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
+import { Html, Box, Plane } from "@react-three/drei";
 //Components
 import Header from "./components/header";
 import Points from "./components/points.js";

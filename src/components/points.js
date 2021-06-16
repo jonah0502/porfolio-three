@@ -1,6 +1,6 @@
 import React from "react";
 import * as THREE from 'three';
-import {useFrame, useLoader} from 'react-three-fiber';
+import {useFrame, useLoader} from '@react-three/fiber';
 import circleImg from '../assets/circle.png';
 import { useCallback, useMemo, useRef} from 'react';
 
