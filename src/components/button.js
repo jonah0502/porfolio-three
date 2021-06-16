@@ -6,11 +6,11 @@ import pdf from '../assets/myRes.pdf'
 import Button from 'react-bootstrap/Button';
 
 const navBoxes = () => {
-//    class: "modern",
 
 const createAbt = () => {
   const aboutBox = new WinBox({
     title: 'About Me',
+    class: "modern",
     width: '600px',
     height: '300px',
     top: 150,
@@ -35,6 +35,7 @@ const createContact = () => {
   const contactBox = new WinBox({
     title: 'Contact Me',
     width: '600px',
+    class: "modern",
     height: '200px',
     top: 150,
     right: 50,

@@ -82,8 +82,8 @@ const PorfolioItem = ({domContent, position, children, bgColor, object}) => {
   return (
     <Section factor={1.5} offset={1} >
       <group position={[0, position, 0]}>
-      <mesh ref={ref} position={[0, 0, 0]}>
-      <Box ref={boxRef} args={[17, 17, 17]} radius={0} position={[65, 0, 35]}>
+      <mesh ref={ref} position={[0, 5, 0]}>
+      <Box ref={boxRef} args={[17, 17, 17]} radius={0} position={[65, 10, 30]}>
         <meshStandardMaterial attach="material" map={texture} />
       </Box>
         </mesh>
