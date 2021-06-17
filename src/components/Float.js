@@ -14,7 +14,7 @@ export default function Model(props) {
   })
   return (
     <group ref={group} {...props} dispose={null}>
-      <group name="Armature" rotation={[Math.PI / 2, 0 , (6*Math.PI)/4]} scale={[0.4, 0.4, 0.4]}>
+      <group name="Armature" rotation={[Math.PI / 2, 0 , (6*Math.PI)/4 + 0.5]} scale={[0.4, 0.4, 0.4]}>
         <primitive object={nodes.mixamorigHips} />
         <skinnedMesh
           geometry={nodes.Ch03.geometry}

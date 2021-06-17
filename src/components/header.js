@@ -17,7 +17,7 @@ export default function Header() {
               <a href='#TagFlix'>TagFlix</a>
             </li>
             <li>
-              <a href='/'>Restaurant-Reviews</a>
+              <a href='/'>RR</a>
             </li>
             <li className='btn'>
               <a href='/'>order</a>

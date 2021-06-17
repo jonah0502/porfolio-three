@@ -40,7 +40,7 @@ const createContact = () => {
     top: 150,
     right: 50,
     bottom: 50,
-    left: 250,
+    left: 265,
     mount: document.querySelector('#contact-content'),
     onfocus: function () {
         this.setBackground(

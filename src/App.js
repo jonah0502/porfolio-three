@@ -69,7 +69,8 @@ function AnimationCanvas() {
 
       <Homepage 
       domContent={domContent}
-      position = {265}>
+      position = {265}
+      >
         <span>Jonah's Webpage</span>
         </Homepage>
         <AboutMe 
@@ -82,7 +83,7 @@ function AnimationCanvas() {
         <TagFlix 
       domContent={domContent}
       position = {-250}
-      bgColor='#FFFFFF'>
+      bgColor='#f8f8ff'>
       <h1 className = "title" style = {{color:"black"}}><span>TagFlix</span></h1>
         </TagFlix>
       </Suspense>
