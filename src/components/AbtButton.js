@@ -12,7 +12,6 @@ import { useHistory, BrowserRouter as Router, Link } from "react-router-dom";
 const NavBoxes = () => {
 
   const history = useHistory();
-  console.log(history)
   function handleClick(path) {
     history.push(path);
   }
@@ -49,7 +48,6 @@ const createAbt = () => {
     },
   })
 }
-  console.log({pdf})
 
 const createContact = () => {
 
@@ -74,12 +72,13 @@ const createContact = () => {
   })
 }
 return(
-  <Router>
 
 <nav className = "header abtMe">
   <ul>
   <li><Button variant="outline-light" onClick={createAbt}>About</Button>{' '}</li>
   <li><Button variant="outline-light" onClick={createContact}>Contact</Button>{' '}</li>
+  <Router>
+
   <li><Link 
  className="btn btn-outline-light"
  role="button"
@@ -89,9 +88,10 @@ return(
  Resume
 </Link>
 </li>  
+</Router>
+
 </ul>
 </nav>
-</Router>
 );
 
 }

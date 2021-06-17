@@ -8,7 +8,6 @@ import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import { Html, Box, Plane } from "@react-three/drei";
 //Components
 import { Section } from "./section";
-
 //Intersection Observer
 import { useInView } from "react-intersection-observer";
 

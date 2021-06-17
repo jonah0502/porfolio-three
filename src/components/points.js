@@ -4,7 +4,7 @@ import {useFrame, useLoader} from '@react-three/fiber';
 import circleImg from '../assets/circle.png';
 import { useCallback, useMemo, useRef} from 'react';
 
-export default function Points() {
+export default function Points( {aVar} ) {
   const imgTex = useLoader(THREE.TextureLoader, circleImg);
   const bufferRef = useRef();
 
@@ -34,6 +34,7 @@ export default function Points() {
 
   useFrame(() => {
     t += 15
+    a += aVar
     const positions = bufferRef.current.array;
 
     let i = 0;

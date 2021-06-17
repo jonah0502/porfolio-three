@@ -12,7 +12,6 @@ import { Github } from 'react-bootstrap-icons';
 const NavBoxes = () => {
 
   const history = useHistory();
-  console.log(history)
   function handleClick(path) {
     history.push(path);
   }

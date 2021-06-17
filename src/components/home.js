@@ -1,5 +1,5 @@
 import React from "react";
-import {useRef} from 'react';
+import {useRef, useEffect} from 'react';
 
 // R3F
 import {useFrame} from "@react-three/fiber";
@@ -13,11 +13,14 @@ import { Section } from "./section";
 export default function Homepage ({domContent, position, children}) {
     const ref = useRef();
     useFrame(() => (ref.current.rotation.y += 0.002));
+    let amp = 0
     return (
       <Section factor={1.5} offset={1}>
         <group position={[0, position, 0]}>
         <mesh ref={ref} position={[0, -35, 0]}>
-             <Points />
+             <Points 
+             aVar = {amp}
+             />
           </mesh>
         <Html fullscreen portal={domContent}>
           <div id="Home" className = "container">
