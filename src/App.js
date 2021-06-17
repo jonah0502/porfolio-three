@@ -5,16 +5,18 @@ import { useCallback, useMemo, useRef, useState, useEffect} from 'react';
 import jonah from './assets/jonah.jpg';
 import * as THREE from 'three'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useHistory, BrowserRouter as Router } from "react-router-dom";
 
 // R3F
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import { Html, Box, Plane } from "@react-three/drei";
 //Components
 import Header from "./components/header";
-import Buttons from "./components/button.js"
+import AbtButtons from "./components/AbtButton.js"
 import Homepage from "./components/home.js"
 import AboutMe from "./components/about-me.js"
 import TagFlix from "./components/tagFlix.js"
+import TagButtons from "./components/TagButton.js"
 // Page State
 import state from "./components/state";
 // React Spring
@@ -78,13 +80,14 @@ function AnimationCanvas() {
       position = {0}
       bgColor='#000000'>
       <h1 className = "abtMe"><span>About Me</span></h1>
-      <Buttons />
+      <AbtButtons />
         </AboutMe>
         <TagFlix 
       domContent={domContent}
       position = {-250}
       bgColor='#f8f8ff'>
       <h1 className = "title" style = {{color:"black"}}><span>TagFlix</span></h1>
+      <TagButtons />
         </TagFlix>
       </Suspense>
     </Canvas>
@@ -103,6 +106,7 @@ function AnimationCanvas() {
 
 function App() {
   return (
+
     <div className="anim">
       <Suspense fallback={<div>Loading...</div>}>
       <Header />

@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { useCallback, useMemo, useRef, useState, useEffect} from 'react';
 import tag from '../assets/tagSphere.png';
 import * as THREE from 'three'
+import Button from 'react-bootstrap/Button';
 
 // R3F
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
@@ -20,11 +21,12 @@ export default function TagFlix ({domContent, position, children, bgColor, objec
     const ref = useRef();
     const sphereRef = useRef();
     useFrame(() => {
-        sphereRef.current.rotation.y += 0.002;
+        sphereRef.current.rotation.y += 0.004;
     });
-    const [refItem, inView] = useInView({ threshold: 0});
+    const [refItem, inView] = useInView({ threshold: 0.5});
     useEffect(() => {
-      inView && (document.getElementsByClassName('anim')[0].style.background = bgColor);
+      inView && (document.getElementsByClassName('anim')[0].style.background = bgColor)
+      for (const x of Array(5).keys()) {inView && (document.getElementsByTagName('a')[x].style.color = "black");}
     }, [inView]);
     const texture = useLoader(THREE.TextureLoader, tag)
     return (
@@ -39,9 +41,9 @@ export default function TagFlix ({domContent, position, children, bgColor, objec
             <MeshWobbleMaterial
         attach="material"
         color="#FFFFFF"
-        factor={0.02} // Strength, 0 disables the effect (default=1)
-        speed={7} // Speed (default=1)
-        roughness={0.02}
+        factor={0.05} // Strength, 0 disables the effect (default=1)
+        speed={2} // Speed (default=1)
+        roughness={0}
         map={texture}
         />
         </Sphere>

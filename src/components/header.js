@@ -6,7 +6,7 @@ export default function Header() {
       <div className='header-inner'>
         <div className='logo'>JONAH.</div>
         <nav>
-          <ul>
+          <ul id="testNavbar">
             <li>
               <a href='#Home'>Home</a>
             </li>

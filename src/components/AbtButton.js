@@ -4,8 +4,29 @@ import "winbox/dist/css/winbox.min.css";
 import "winbox/dist/css/themes/modern.min.css";
 import pdf from '../assets/myRes.pdf'
 import Button from 'react-bootstrap/Button';
+import { useHistory, BrowserRouter as Router, Link } from "react-router-dom";
 
-const navBoxes = () => {
+//      <li><Button variant="outline-light" onClick={() => handleClick({pdf})}>Resume</Button>{' '}</li>
+
+
+const NavBoxes = () => {
+
+  const history = useHistory();
+  console.log(history)
+  function handleClick(path) {
+    history.push(path);
+  }
+// const SubFuntion = ()=>{
+//   const history = useHistory();
+//   console.log(history)
+//   function handleClick(path) {
+//     history.push(path);
+//   }
+  // return(
+  //   <li><Button variant="outline-light" onClick={() => handleClick({pdf})}>Resume</Button>{' '}</li>
+  // );
+
+//}
 
 const createAbt = () => {
   const aboutBox = new WinBox({
@@ -28,7 +49,7 @@ const createAbt = () => {
     },
   })
 }
-  
+  console.log({pdf})
 
 const createContact = () => {
 
@@ -53,15 +74,25 @@ const createContact = () => {
   })
 }
 return(
+  <Router>
+
 <nav className = "header abtMe">
   <ul>
   <li><Button variant="outline-light" onClick={createAbt}>About</Button>{' '}</li>
   <li><Button variant="outline-light" onClick={createContact}>Contact</Button>{' '}</li>
-      <li></li>
-      <li><Button variant="outline-light"><a href={pdf} style={{textDecoration: "none", color: "white"}} target="_blank">Resume</a></Button>{' '}</li>
-  </ul>
+  <li><Link 
+ className="btn btn-outline-light"
+ role="button"
+ to={pdf}
+ target="_blank"
+> 
+ Resume
+</Link>
+</li>  
+</ul>
 </nav>
+</Router>
 );
 
 }
-export default navBoxes;
+export default NavBoxes;

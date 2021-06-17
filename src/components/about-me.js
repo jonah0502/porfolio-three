@@ -21,7 +21,9 @@ export default function AbtMe ({domContent, position, children, bgColor, object}
     });
     const [refItem, inView] = useInView({ threshold: 0});
     useEffect(() => {
-      inView && (document.getElementsByClassName('anim')[0].style.background = bgColor);
+      inView && (document.getElementsByClassName('anim')[0].style.background = bgColor)
+      for (const x of Array(5).keys()) {inView && (document.getElementsByTagName('a')[x].style.color = "white");}
+
     }, [inView]);
     const texture = useLoader(THREE.TextureLoader, jonah)
     return (
