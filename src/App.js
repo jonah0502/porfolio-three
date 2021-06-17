@@ -17,6 +17,8 @@ import Homepage from "./components/home.js"
 import AboutMe from "./components/about-me.js"
 import TagFlix from "./components/tagFlix.js"
 import TagButtons from "./components/TagButton.js"
+import Loader from "./components/loader.js"
+import ButtonText from "./components/buttonText.js"
 // Page State
 import state from "./components/state";
 // React Spring
@@ -73,7 +75,7 @@ function AnimationCanvas() {
       domContent={domContent}
       position = {265}
       >
-        <span>Jonah's Webpage</span>
+        <span>Jonah Biedermann</span>
         </Homepage>
         <AboutMe 
       domContent={domContent}
@@ -91,6 +93,8 @@ function AnimationCanvas() {
         </TagFlix>
       </Suspense>
     </Canvas>
+    <Loader />
+    <ButtonText />
           <div
           className='scrollArea'
           ref={scrollArea}
