@@ -4,13 +4,13 @@ import {useFrame, useLoader} from '@react-three/fiber';
 import circleImg from '../assets/circle.png';
 import { useCallback, useMemo, useRef} from 'react';
 
-export default function Points( {aVar} ) {
+export default function Points( {aVar = 0, tVar = 15, baseAmp = 3, dotColor = 0x00AAFF} ) {
   const imgTex = useLoader(THREE.TextureLoader, circleImg);
   const bufferRef = useRef();
 
   let t = 0;
   let f = 0.002;
-  let a = 3; //amplitude
+  let a = baseAmp; //amplitude
   const graph = useCallback((x, z) => {
     return Math.sin(f * (x ** 2 + z ** 2 + t)) * a;
   }, [t, f, a])
@@ -33,7 +33,7 @@ export default function Points( {aVar} ) {
   }, [count, sep, graph])
 
   useFrame(() => {
-    t += 15
+    t += tVar
     a += aVar
     const positions = bufferRef.current.array;
 
@@ -66,7 +66,7 @@ export default function Points( {aVar} ) {
       <pointsMaterial
         attach="material"
         map={imgTex}
-        color={0x00AAFF}
+        color={dotColor}
         size={0.5}
         sizeAttenuation
         transparent={false}

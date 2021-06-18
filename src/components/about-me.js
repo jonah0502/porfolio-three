@@ -2,6 +2,7 @@ import React from "react";
 import { useCallback, useMemo, useRef, useState, useEffect} from 'react';
 import jonah from '../assets/jonah.jpg';
 import * as THREE from 'three'
+import Points from "./points.js";
 
 // R3F
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
@@ -29,6 +30,10 @@ export default function AbtMe ({domContent, position, children, bgColor, object}
       <Section factor={1.5} offset={1} >
         <group position={[0, position, 0]}>
         <mesh ref={ref} position={[0, 5, 0]}>
+        <Points 
+             baseAmp = {500}
+             dotColor = {0xFFFFFF}
+             />
         <Box ref={boxRef} args={[17, 17, 17]} radius={0} position={[65, 10, 30]}>
           <meshStandardMaterial attach="material" map={texture} />
         </Box>

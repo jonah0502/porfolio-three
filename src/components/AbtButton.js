@@ -77,18 +77,8 @@ return(
   <ul>
   <li><Button variant="outline-light" onClick={createAbt}>About</Button>{' '}</li>
   <li><Button variant="outline-light" onClick={createContact}>Contact</Button>{' '}</li>
-  <Router>
+  <li> <a className="btn btn-outline-light"  target="_blank" href={pdf}>Resume</a></li>
 
-  <li><Link 
- className="btn btn-outline-light"
- role="button"
- to={pdf}
- target="_blank"
-> 
- Resume
-</Link>
-</li>  
-</Router>
 
 </ul>
 </nav>
