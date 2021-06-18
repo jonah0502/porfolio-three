@@ -4,7 +4,7 @@ import {useFrame, useLoader} from '@react-three/fiber';
 import circleImg from '../assets/circle.png';
 import { useCallback, useMemo, useRef} from 'react';
 
-export default function Points( {aVar = 0, tVar = 15, baseAmp = 3, dotColor = 0x00AAFF} ) {
+export default function Points( {aVar = 0, tVar = 15, baseAmp = 3, dotColor = 0x00AAFF, stars = false, zLimit =40} ) {
   const imgTex = useLoader(THREE.TextureLoader, circleImg);
   const bufferRef = useRef();
 
@@ -25,7 +25,14 @@ export default function Points( {aVar = 0, tVar = 15, baseAmp = 3, dotColor = 0x
         let x = sep * (xi - count / 2);
         let z = sep * (zi - count / 2);
         let y = graph(x, z);
+       if(stars){
+        if(x<zLimit){ //higher values push stars forward
+          positions.push(x, y, z);
+        }
+       }
+       else{
         positions.push(x, y, z);
+       }
       }
     }
 

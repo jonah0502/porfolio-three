@@ -18,26 +18,34 @@ export default function AbtMe ({domContent, position, children, bgColor, object}
     const boxRef = useRef();
     useFrame(() => {
       boxRef.current.rotation.y += 0.002;
+      boxRef.current.position.x -= 0.002;
+      ref.current.position.y += 0.01
     });
     const [refItem, inView] = useInView({ threshold: 0});
     useEffect(() => {
       inView && (document.getElementsByClassName('anim')[0].style.background = bgColor)
-      for (const x of Array(5).keys()) {inView && (document.getElementsByTagName('a')[x].style.color = "white");}
+      for (const x of Array(4).keys()) {inView && (document.getElementsByTagName('a')[x].style.color = "white");}
+      document.getElementsByClassName('logo')[0].style.color = "white"
 
     }, [inView]);
     const texture = useLoader(THREE.TextureLoader, jonah)
     return (
       <Section factor={1.5} offset={1} >
         <group position={[0, position, 0]}>
-        <mesh ref={ref} position={[0, 5, 0]}>
+        <mesh  ref={ref}  position={[0, 5, 0]}>
         <Points 
              baseAmp = {500}
              dotColor = {0xFFFFFF}
+             stars = {true}
              />
+        </mesh>
+        <mesh  position={[0, 5, 0]}>
+
         <Box ref={boxRef} args={[17, 17, 17]} radius={0} position={[65, 10, 30]}>
           <meshStandardMaterial attach="material" map={texture} />
         </Box>
-          </mesh>
+        </mesh>
+
         <Html fullscreen portal={domContent}>
           <div id="AbtMe" ref={refItem} className = "container">
                {children}

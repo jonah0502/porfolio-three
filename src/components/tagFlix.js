@@ -26,7 +26,8 @@ export default function TagFlix ({domContent, position, children, bgColor, objec
     const [refItem, inView] = useInView({ threshold: 0.5});
     useEffect(() => {
       inView && (document.getElementsByClassName('anim')[0].style.background = bgColor)
-      for (const x of Array(5).keys()) {inView && (document.getElementsByTagName('a')[x].style.color = "black");}
+      for (const x of Array(4).keys()) {inView && (document.getElementsByTagName('a')[x].style.color = "black");}
+      document.getElementsByClassName('logo')[0].style.color = "black"
     }, [inView]);
     const texture = useLoader(THREE.TextureLoader, tag)
     return (
@@ -37,7 +38,7 @@ export default function TagFlix ({domContent, position, children, bgColor, objec
         <Suspense fallback={null}>
         <Float position={[10, -50, -75]}/>
         </Suspense>
-        <Sphere ref={sphereRef} visible position={[82, 4, 20]} args={[4, 16, 16]}>
+        <Sphere ref={sphereRef} visible position={[82, 22, 20]} args={[4, 16, 16]}>
             <MeshWobbleMaterial
         attach="material"
         color="#FFFFFF"
