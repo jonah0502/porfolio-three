@@ -6,7 +6,7 @@ import Points from "./points.js";
 
 // R3F
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
-import { Html, Box, Plane } from "@react-three/drei";
+import { Html, Box, Plane, Stars } from "@react-three/drei";
 //Components
 import { Section } from "./section";
 //Intersection Observer
@@ -18,7 +18,7 @@ export default function AbtMe ({domContent, position, children, bgColor, object}
     const boxRef = useRef();
     useFrame(() => {
       boxRef.current.rotation.y += 0.002;
-      boxRef.current.position.x -= 0.002;
+      //boxRef.current.position.x -= 0.002;
       ref.current.position.y += 0.01
     });
     const [refItem, inView] = useInView({ threshold: 0});
@@ -33,15 +33,11 @@ export default function AbtMe ({domContent, position, children, bgColor, object}
       <Section factor={1.5} offset={1} >
         <group position={[0, position, 0]}>
         <mesh  ref={ref}  position={[0, 5, 0]}>
-        <Points 
-             baseAmp = {500}
-             dotColor = {0xFFFFFF}
-             stars = {true}
-             />
+        <Stars radius={105} depth={50} count={5000} factor={4} saturation={0} fade />
         </mesh>
         <mesh  position={[0, 5, 0]}>
 
-        <Box ref={boxRef} args={[17, 17, 17]} radius={0} position={[65, 10, 30]}>
+        <Box ref={boxRef} args={[17, 17, 17]} radius={0} position={[55, 10, 32]}>
           <meshStandardMaterial attach="material" map={texture} />
         </Box>
         </mesh>
