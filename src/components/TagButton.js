@@ -29,7 +29,7 @@ const NavBoxes = () => {
 
 const createAbt = () => {
   const aboutBox = new WinBox({
-    title: 'About Me',
+    title: 'About Tagflix',
     class: "modern",
     width: '600px',
     height: '300px',
