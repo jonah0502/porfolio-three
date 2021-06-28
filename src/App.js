@@ -5,8 +5,7 @@ import { useCallback, useMemo, useRef, useState, useEffect} from 'react';
 import jonah from './assets/jonah.jpg';
 import * as THREE from 'three'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useHistory, BrowserRouter as Router } from "react-router-dom";
-
+import { Switch, Route, Link } from "react-router-dom"; 
 // R3F
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import { Html, Box, Plane } from "@react-three/drei";
@@ -19,6 +18,8 @@ import TagFlix from "./components/tagFlix.js"
 import TagButtons from "./components/TagButton.js"
 import Loader from "./components/loader.js"
 import ButtonText from "./components/buttonText.js"
+import Form from "./components/form.js"
+
 // Page State
 import state from "./components/state";
 // React Spring
@@ -96,6 +97,7 @@ function AnimationCanvas() {
     </Canvas>
     <Loader />
     <ButtonText />
+    
           <div
           className='scrollArea'
           ref={scrollArea}
@@ -109,7 +111,7 @@ function AnimationCanvas() {
 }
 
 
-function App() {
+function Start() {
   return (
 
     <div className="anim">
@@ -120,5 +122,17 @@ function App() {
     </div>
   );
 }
+
+function App() {
+  return (
+    <div>
+      <Switch>
+        <Route path="/" exact component={Start} />
+        <Route path="/page1" component={Form} />
+      </Switch>
+    </div>
+  );
+}
+
 
 export default App;

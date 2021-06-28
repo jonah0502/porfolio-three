@@ -60,7 +60,7 @@ const createContact = () => {
     right: 50,
     bottom: 50,
     left: 265,
-    mount: document.querySelector('#contact-content'),
+    url: "/page1",
     onfocus: function () {
         this.setBackground(
             `linear-gradient(90deg, rgba(49,36,239,1) 
