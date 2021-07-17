@@ -36,7 +36,6 @@ export default function TagFlix ({domContent, position, children, bgColor, objec
         <mesh ref={ref} >
 
         <Suspense fallback={null}>
-        <Float position={[10, -50, -75]}/>
         </Suspense>
         <Sphere ref={sphereRef} visible position={[82, 22, 20]} args={[4, 16, 16]}>
             <MeshWobbleMaterial

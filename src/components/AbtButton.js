@@ -53,10 +53,10 @@ const createContact = () => {
 
   const contactBox = new WinBox({
     title: 'Contact Me',
-    width: '600px',
+    width: '900px',
     class: "modern",
-    height: '200px',
-    top: 150,
+    height: '700px',
+    top: 90,
     right: 50,
     bottom: 50,
     left: 265,

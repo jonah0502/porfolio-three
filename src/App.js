@@ -55,7 +55,7 @@ const Lights = () => {
 
 
 
-function AnimationCanvas() {
+function HomeAnimationCanvas() {
   const [events, setEvents] = useState();
   const domContent = useRef();
   const scrollArea = useRef();
@@ -86,9 +86,43 @@ function AnimationCanvas() {
       <h1 className = "abtMe"><span>About Me</span></h1>
       <AbtButtons />
         </AboutMe>
+      </Suspense>
+    </Canvas>
+    <Loader />
+    <ButtonText />
+    
+          <div
+          className='scrollArea'
+          ref={scrollArea}
+          onScroll={onScroll}
+          {...events}>
+          <div style={{ position: "sticky", top: 0 }} ref={domContent} />
+          <div style={{ height: `${state.sections * 100}vh` }} />
+        </div>
+      </>
+  );
+}
+
+
+function ProjectAnimationCanvas() {
+  const [events, setEvents] = useState();
+  const domContent = useRef();
+  const scrollArea = useRef();
+  const onScroll = (e) => (state.top.current = e.target.scrollTop);
+  useEffect(() => void onScroll({ target: scrollArea.current }), []);
+  return (
+    <>
+    <Canvas
+      concurrent
+      colorManagement
+      camera={{ position: [100, 10, 0], fov: 75 }}
+    >
+    <Lights />
+
+      <Suspense fallback={null}>
         <TagFlix 
       domContent={domContent}
-      position = {-250}
+      position = {265}
       bgColor='#f8f8ff'>
       <h1 className = "title" style = {{color:"black"}}><span>TagFlix</span></h1>
       <TagButtons />
@@ -111,13 +145,26 @@ function AnimationCanvas() {
 }
 
 
-function Start() {
+
+function Home() {
   return (
 
     <div className="anim">
       <Suspense fallback={<div>Loading...</div>}>
       <Header />
-        <AnimationCanvas  />
+        <HomeAnimationCanvas  />
+      </Suspense>
+    </div>
+  );
+}
+
+function Projects() {
+  return (
+
+    <div className="anim">
+      <Suspense fallback={<div>Loading...</div>}>
+      <Header />
+        <ProjectAnimationCanvas  />
       </Suspense>
     </div>
   );
@@ -127,7 +174,8 @@ function App() {
   return (
     <div>
       <Switch>
-        <Route path="/" exact component={Start} />
+        <Route path="/" exact component={Home} />
+        <Route path="/projects" component={Projects} />
         <Route path="/page1" component={Form} />
       </Switch>
     </div>

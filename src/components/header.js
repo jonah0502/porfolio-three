@@ -1,4 +1,6 @@
 import React from "react";
+import { Switch, Route, Link } from "react-router-dom"; 
+import pdf from '../assets/myRes.pdf'
 
 export default function Header() {
   return (
@@ -7,20 +9,24 @@ export default function Header() {
         <div className='logo'>JONAH.</div>
         <nav>
           <ul id="testNavbar">
-            <li>
-              <a href='#Home'>Home</a>
+              <li>
+              <Link to={"/"} className="nav-link"> 
+                Home 
+              </Link> 
             </li>
             <li>
-              <a href='#AbtMe'>About</a>
+            <Link to={"/projects"} className="nav-link"> 
+              Projects 
+            </Link> 
             </li>
             <li>
-              <a href='#TagFlix'>TagFlix</a>
+              <a href='#TagFlix'>Experience</a>
             </li>
             <li>
-              <a href='/'>RR</a>
+              <a href='#TagFlix'>Misc</a>
             </li>
             <li className='btn'>
-              <a href='/'>order</a>
+            <a target="_blank" href={pdf}>Resume</a>
             </li>
           </ul>
         </nav>
