@@ -1,16 +1,15 @@
 import React from "react";
-import { useCallback, useMemo, useRef, useState, useEffect} from 'react';
+import { useRef, useEffect} from 'react';
 import jonah from '../assets/jonah.jpg';
 import * as THREE from 'three'
-import Points from "./points.js";
 import moon from '../assets/moon.jpg';
 import normal from '../assets/normal.jpg';
 import Me from "./Persistance.js";
 import { Suspense } from 'react';
 
 // R3F
-import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
-import { Html, Box, Plane, Stars, Sphere } from "@react-three/drei";
+import { useFrame, useLoader } from "@react-three/fiber";
+import { Html, Box, Stars, Sphere } from "@react-three/drei";
 //Components
 import { Section } from "./section";
 //Intersection Observer

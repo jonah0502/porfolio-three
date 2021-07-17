@@ -122,7 +122,7 @@ function ProjectAnimationCanvas() {
       <Suspense fallback={null}>
         <TagFlix 
       domContent={domContent}
-      position = {265}
+      position = {240}
       bgColor='#f8f8ff'>
       <h1 className = "title" style = {{color:"black"}}><span>TagFlix</span></h1>
       <TagButtons />
@@ -162,10 +162,28 @@ function Projects() {
   return (
 
     <div className="anim">
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div><h1>Loading...</h1></div>}>
       <Header />
         <ProjectAnimationCanvas  />
       </Suspense>
+    </div>
+  );
+}
+
+function Experience() {
+  return (
+
+    <div>
+      <h1>Work in Progress</h1>
+    </div>
+  );
+}
+
+function Misc() {
+  return (
+
+    <div>
+      <h1>Work in Progress</h1>
     </div>
   );
 }
@@ -176,6 +194,8 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/projects" component={Projects} />
+        <Route path="/experience" component={Experience} />
+        <Route path="/misc" component={Misc} />
         <Route path="/page1" component={Form} />
       </Switch>
     </div>

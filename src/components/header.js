@@ -20,10 +20,14 @@ export default function Header() {
             </Link> 
             </li>
             <li>
-              <a href='#TagFlix'>Experience</a>
+            <Link to={"/experience"} className="nav-link"> 
+              Experience 
+            </Link>             
             </li>
             <li>
-              <a href='#TagFlix'>Misc</a>
+              <Link to={"/misc"} className="nav-link"> 
+                Misc 
+              </Link>
             </li>
             <li className='btn'>
             <a target="_blank" href={pdf}>Resume</a>

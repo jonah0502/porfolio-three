@@ -17,6 +17,7 @@ export default function Loader() {
       ({ progress, opacity }, active) =>
         active && (
           <a.div className='loading' style={{ opacity }}>
+            <h5 style={{ color: "white"}}>Loading...</h5>
             <div className='loading-bar-container'>
               <a.div className='loading-bar' style={{ width: progress }}></a.div>
             </div>

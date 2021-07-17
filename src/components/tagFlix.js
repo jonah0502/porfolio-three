@@ -1,13 +1,12 @@
 import React from "react";
 import { Suspense } from 'react';
-import { useCallback, useMemo, useRef, useState, useEffect} from 'react';
+import { useRef, useEffect} from 'react';
 import tag from '../assets/tagSphere.png';
 import * as THREE from 'three'
-import Button from 'react-bootstrap/Button';
 
 // R3F
-import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
-import { Html, Box, Plane, Sphere, MeshWobbleMaterial } from "@react-three/drei";
+import { useFrame, useLoader } from "@react-three/fiber";
+import { Html, Sphere, MeshWobbleMaterial } from "@react-three/drei";
 //Components
 import { Section } from "./section";
 
@@ -37,7 +36,7 @@ export default function TagFlix ({domContent, position, children, bgColor, objec
 
         <Suspense fallback={null}>
         </Suspense>
-        <Sphere ref={sphereRef} visible position={[82, 22, 20]} args={[4, 16, 16]}>
+        <Sphere ref={sphereRef} visible position={[80, 0, 20]} args={[4, 16, 16]}>
             <MeshWobbleMaterial
         attach="material"
         color="#FFFFFF"
