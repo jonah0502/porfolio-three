@@ -6,7 +6,7 @@ import {useThree,useFrame} from "@react-three/fiber";
 import { Html} from "@react-three/drei";
 //Components
 import Points from "./points.js";
-import Ame from "./Astronome.js"
+//import Ame from "./Astronome.js"
 import { Section } from "./section";
 import {
   CubeTextureLoader,
@@ -69,8 +69,7 @@ export default function Homepage ({domContent, position, children}) {
     const spaceMan = useRef();
 
     useFrame(() => (
-      ref.current.rotation.y += 0.002,
-      spaceMan.current.rotation.y += 0.005
+      ref.current.rotation.y += 0.002
             ));
     let amp = 0
     return (
@@ -80,7 +79,7 @@ export default function Homepage ({domContent, position, children}) {
         <mesh ref={ref} position={[0, -35, 0]}>
           <Sphere/>
           <mesh ref={spaceMan}>
-        <Ame position={[0, 14, -17]} scale={[25,25,25]} rotation={[-0.7,Math.PI,-0.3]}/>
+        {/*<Ame position={[0, 14, -17]} scale={[25,25,25]} rotation={[-0.7,Math.PI,-0.3]}/>*/}
           </mesh>
              <Points 
              aVar = {amp}
