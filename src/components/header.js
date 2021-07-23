@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom"; 
+import {Link } from "react-router-dom"; 
 import pdf from '../assets/myRes.pdf'
 
 export default function Header() {

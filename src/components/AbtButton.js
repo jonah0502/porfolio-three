@@ -55,7 +55,7 @@ const createContact = () => {
     title: 'Contact Me',
     width: '900px',
     class: "modern",
-    height: '700px',
+    height: '475px',
     top: 90,
     right: 50,
     bottom: 50,

@@ -1,12 +1,14 @@
 import React from "react";
-import { useRef, useEffect} from 'react';
+import { useRef, useEffect, useState, Suspense} from 'react';
 import jonah from '../assets/jonah.jpg';
 import * as THREE from 'three'
 import moon from '../assets/moon.jpg';
 import normal from '../assets/normal.jpg';
-import Me from "./Persistance.js";
-import { Suspense } from 'react';
-
+//import Me from "./Persistance.js";
+import Sat2 from "./Blender_sat.js"
+import Alien from "./Alien.js"
+import Me from "./Bcc3_me.js"
+import url from '../assets/Strobe.mp4'
 // R3F
 import { useFrame, useLoader } from "@react-three/fiber";
 import { Html, Box, Stars, Sphere } from "@react-three/drei";
@@ -23,11 +25,22 @@ export default function AbtMe ({domContent, position, children, bgColor, object}
     const moonTexture = useLoader(THREE.TextureLoader, moon)
     const normals = useLoader(THREE.TextureLoader, normal);
 
-    useFrame(() => {
-      boxRef.current.rotation.y += 0.002;
-      //boxRef.current.position.x -= 0.002;
-      ref.current.position.y += 0.01
+    const [video] = useState(() => {
+      const vid = document.createElement("video");
+      vid.src = url;
+      vid.crossOrigin = "Anonymous";
+      vid.loop = true;
+      vid.muted = true;
+      vid.play();
+      return vid;
     });
+
+
+
+
+    useFrame(() => (
+      sphereRef.current.rotation.y += 0.002
+    ));
     const [refItem, inView] = useInView({ threshold: 0});
     useEffect(() => {
       inView && (document.getElementsByClassName('anim')[0].style.background = bgColor)
@@ -45,8 +58,13 @@ export default function AbtMe ({domContent, position, children, bgColor, object}
         <mesh>
         <Suspense fallback={null}>
           {/*<Me position={[95, 0, -0]}/>*/}
+
+          {/*<Me position={[30, 50, 0]} scale={[10,10,10]} rotation={[Math.PI / 2 -0.5, 1.5, (6*Math.PI)/4 + 0.5]} scale={50}/>*/}
+          {/*<Sat2 position={[70, 50, 0]}/>*/}
+          
+          <Alien scale={30,30,30} position={[0, 100, -70]}/>
         </Suspense>
-      <Sphere ref={sphereRef} visible position={[82, 22, 20]} args={[4, 16, 16]}>
+      <Sphere ref={sphereRef} visible position={[25, 125, 75]} args={[4, 16, 16]} scale={4,4,4}>
           <meshStandardMaterial
       attach="material"
       color="#FFFFFF"
@@ -63,8 +81,11 @@ export default function AbtMe ({domContent, position, children, bgColor, object}
 
         <mesh  position={[0, 5, 0]}>
 
-        <Box ref={boxRef} args={[17, 17, 17]} radius={0} position={[55, 10, 32]}>
-          <meshStandardMaterial attach="material" map={texture} />
+        <Box ref={boxRef} args={[17, 17, 17]} radius={0} position={[55, 10, 32]} rotation={[0,0,0]}>
+          <meshStandardMaterial emissive={"white"} side={THREE.DoubleSide}>
+          <videoTexture attach="map" args={[video]} />
+          <videoTexture attach="emissiveMap" args={[video]} />
+        </meshStandardMaterial>
         </Box>
         </mesh>
 
