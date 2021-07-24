@@ -1,4 +1,5 @@
 {
+  "homepage": ".",
   "name": "wobble-transition",
   "version": "0.1.0",
   "private": true,
